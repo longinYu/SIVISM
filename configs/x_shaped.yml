@@ -16,6 +16,9 @@ train:
     f_dim: 128
     annealing: False # False
     warm_ratio: 2
+    sigma_ini: 1
+    log_var_ini: 0
+    log_var_min: -6
 
 sampling:
     visual_time: 10

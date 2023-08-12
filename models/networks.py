@@ -2,8 +2,10 @@ import torch
 import torch.nn as nn
 
 class SIMINet(nn.Module):
-    def __init__(self, namedict, device, log_var_ini = 0, log_var_min = -6):
-        # the optimizer paprameters for sigma is the log_var
+    def __init__(self, namedict, device):
+        """
+        the optimizer paprameters for sigma is the log_var
+        """
         super(SIMINet, self).__init__()
         self.z_dim = namedict.z_dim
         self.h_dim = namedict.h_dim
@@ -16,9 +18,9 @@ class SIMINet(nn.Module):
             nn.ReLU(),
             nn.Linear(self.h_dim, self.out_dim)
         )
-        self.log_var = nn.Parameter(torch.zeros(namedict.out_dim) + log_var_ini, requires_grad = True)
+        self.log_var = nn.Parameter(torch.zeros(namedict.out_dim) + namedict.log_var_ini, requires_grad = True)
         self.device = device
-        self.log_var_min = log_var_min
+        self.log_var_min = namedict.log_var_min
     
     def reparameterize(self, mu, log_var):
         std = torch.exp(log_var/2)

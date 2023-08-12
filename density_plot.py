@@ -84,6 +84,7 @@ def scatterplot(method = "SIVI-SM"):
     plt.savefig('exp/{}/traceplot{}/{}scatterplot_range{}-{}—new.jpg'.format(config.target_score, datetimelabel, method,plotarrange, plotarrange+5),dpi=120, bbox_inches='tight')
     plt.close()
 
-scatterplot(method = "SIVI-SM")
-# scatterplot(method = "SIVI")
-# scatterplot(method = "UIVI")
+if __name__ == "__main__":
+    scatterplot(method = "SIVI-SM")
+    # scatterplot(method = "SIVI")
+    # scatterplot(method = "UIVI")

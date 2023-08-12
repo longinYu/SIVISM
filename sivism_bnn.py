@@ -113,7 +113,7 @@ class SIVISM(object):
 
         # Select the style of networks and the device to trainging 
         self.target_model = target_distribution[self.target](self.device, self.X_train.shape[1], loglambda = self.loglambda_hyp, loggamma = self.loggamma_hyp)
-        self.SemiVInet = SIMINet(self.trainpara, self.device, log_var_ini=self.trainpara.log_var_ini, log_var_min=self.trainpara.log_var_min).to(self.device)
+        self.SemiVInet = SIMINet(self.trainpara, self.device).to(self.device)
         self.fnet = Fnet(self.trainpara).to(self.device)
 
         # Choose a training strategy

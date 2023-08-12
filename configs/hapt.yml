@@ -18,6 +18,9 @@ train:
     TransTrick: True
     train_vis_inepoch: 6
     warm_ratio: 2
+    sigma_ini: 1
+    log_var_ini: 0
+    log_var_min: -6
 sampling:
     visual_time: 80 # 89 * 9 = 720
     num: 8000

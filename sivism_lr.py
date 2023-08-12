@@ -33,13 +33,13 @@ def parse_config():
             "--config", type=str, default = "LRwaveform.yml", help="Path to the config file"
         )
     parser.add_argument(
-            "--baseline_sample", type=str, default = "parallel_SGLD_LRwaveform.pt", help="Path to the estimated samples generated from SGLD."
+            "--baseline_sample", type=str, default = "SGLD_LR/parallel_SGLD_LRwaveform.pt", help="Path to the estimated samples generated from SGLD."
         )
     args = parser.parse_args()
     with open(os.path.join("configs", args.config), "r") as f:
             config = yaml.safe_load(f)
     new_config = dict2namespace(config)
-    new_config.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    new_config.device = torch.device('cpu') # double precision
     new_config.baseline_sample = args.baseline_sample
     return new_config
 
@@ -150,21 +150,21 @@ class SIVISM(object):
                 if epoch%(self.config.sampling.visual_time * 5) ==0:
                     plt.cla()
                     figpos, axpos = plt.subplots(5, 5,figsize = (15,15), constrained_layout=False)
-                    for plotx in range(5):
-                        for ploty in range(5):
+                    for plotx in range(1,6):
+                        for ploty in range(1,6):
                             if ploty != plotx:
                                 X1, Y1, Z = density_estimation(X[:,plotx].cpu().numpy(), X[:,ploty].cpu().numpy())
-                                axpos[plotx,ploty].contour(X1, Y1, Z,colors='purple')
+                                axpos[plotx-1,ploty-1].contour(X1, Y1, Z,colors= "#ff7f0e")
                                 X1, Y1, Z = density_estimation(self.baseline_sample[:,plotx].cpu().numpy(), self.baseline_sample[:,ploty].cpu().numpy())
-                                axpos[plotx,ploty].contour(X1, Y1, Z,colors='r')
+                                axpos[plotx-1,ploty-1].contour(X1, Y1, Z,colors= 'black')
                             else:
-                                sns.kdeplot(X[:,plotx].cpu().numpy(),shade=True,color="purple",ax = axpos[plotx, ploty], label="SISM").set(ylabel=None)
-                                sns.kdeplot(self.baseline_sample[:,plotx].cpu().numpy(),shade=True,color="r",ax = axpos[plotx, ploty], label="SGLD").set(ylabel=None)
-                                axpos[plotx,ploty].legend()
+                                sns.kdeplot(X[:,plotx].cpu().numpy(),fill=True,color= "#ff7f0e",ax = axpos[plotx-1, ploty-1], label="SIVISM").set(ylabel=None)
+                                sns.kdeplot(self.baseline_sample[:,plotx].cpu().numpy(),fill=True,color= "black",ax = axpos[plotx-1, ploty-1], label="SGLD").set(ylabel=None)
+                                axpos[plotx-1,ploty-1].legend()
                     figpos.tight_layout()
                     plt.savefig('exp/{}/traceplot{}/sample_scatterplot{}.jpg'.format(self.target, self.datetimelabel, self.iter_idx))
                     plt.close()
-                    torch.save(X.cpu(), 'exp/{}/traceplot{}/SISM_sample.pt'.format(self.target, self.datetimelabel))
+                    torch.save(X.cpu(), 'exp/{}/traceplot{}/SIVISM_sample.pt'.format(self.target, self.datetimelabel))
                 
                 # calculate the test_loglik
                 with torch.no_grad():
