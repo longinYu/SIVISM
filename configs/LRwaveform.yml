@@ -1,32 +1,3 @@
-# target_score: "LRwaveform"
-
-# train:
-#     SIMI: "SIMINet"
-#     num_epochs: 200
-#     num_perepoch: 100
-#     batchsize: 100  
-#     sto_batchsize: 400
-#     ftimes: 1
-#     lr_SIMI: 0.001
-#     lr_f: 0.002
-#     gamma: 0.9
-#     gamma_step: 3000
-#     z_dim: 10
-#     h_dim: 100
-#     out_dim: 22
-#     f_dim: 256
-#     annealing: False
-#     TransTrick: True
-#     train_vis_inepoch: 50
-#     warm_ratio: 2
-#     sigma_ini: 1
-#     log_var_ini: 0
-#     log_var_min: -6
-    
-# sampling:
-#     visual_time: 10
-#     num: 1000
-
 target_score: "LRwaveform"
 
 train:
