@@ -1,0 +1,31 @@
+target_score: "Bnn_boston"
+
+train:
+    SIMI: "SIMINet"
+    num_epochs: 200 # 400, 0.001
+    num_perepoch: 100
+    batchsize: 100  
+    sto_batchsize: 100 # full batch is 455
+    ftimes: 1
+    lr_SIMI: 0.00002        # 0.0001, 0.00001, 0.00002, 0.000005 
+    lr_SIMI_var: 0.00002
+    lr_f: 0.01     # 0.01, 0.001, 0.0001
+    gamma: 0.9
+    gamma_step: 1000
+    z_dim: 3
+    h_dim: 10
+    out_dim: 751
+    f_dim: 16
+    annealing: False
+    TransTrick: False
+    train_vis_inepoch: 100
+    warm_ratio: 4.0
+    fnet_ini_num: 100
+    sigma_ini: 1 
+    log_var_ini: -8
+    log_var_min: -20
+
+    
+sampling:
+    visual_time: 20
+    num: 100

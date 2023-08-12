@@ -1,0 +1,24 @@
+target_score: "mnist"
+train:
+    SIMI: "SIMINet"
+    num_epochs: 3000         # 150000 times iteration.
+    sto_batchsize: 2000      # batch size in stochatisc approximation in target score
+    num_perepoch: 30
+    batchsize: 100           # batch size in nn, more is better, 200, 400 is a proper choose.
+    ftimes: 1
+    lr_SIMI: 0.001         
+    lr_f: 0.001             
+    gamma: 0.9 
+    gamma_step: 3000
+    z_dim: 100
+    h_dim: 200
+    out_dim: 7850
+    f_dim: 256 # 200
+    annealing: False
+    TransTrick: True
+    train_vis_inepoch: 30
+    warm_ratio: 2
+sampling:
+    visual_time: 80
+    num: 8000
+    test_batch: 10000

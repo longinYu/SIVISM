@@ -1,0 +1,22 @@
+target_score: "x_shaped"
+
+train:
+    SIMI: "SIMINet"
+    num_epochs: 500 # 100, 32
+    num_perepoch: 100
+    batchsize: 500
+    ftimes: 1
+    lr_SIMI: 0.001
+    lr_f: 0.002
+    gamma: 0.9
+    gamma_step: 1000
+    z_dim: 3
+    h_dim: 50
+    out_dim: 2
+    f_dim: 128
+    annealing: False # False
+    warm_ratio: 2
+
+sampling:
+    visual_time: 10
+    num: 1000

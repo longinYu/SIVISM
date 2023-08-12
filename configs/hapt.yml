@@ -1,0 +1,24 @@
+target_score: "hapt"
+train:
+    SIMI: "SIMINet" 
+    num_epochs: 5000         # 45,000 times iteration.
+    sto_batchsize: 863       # batch size in stochatisc approximation in target score
+    num_perepoch: 9
+    batchsize: 200           # more is better, 200, 400 is a proper choose.
+    ftimes: 1
+    lr_SIMI: 0.002         
+    lr_f: 0.002            
+    gamma: 0.9 
+    gamma_step: 3000
+    z_dim: 100
+    h_dim: 200
+    out_dim: 6744
+    f_dim: 256 # 200
+    annealing: False
+    TransTrick: True
+    train_vis_inepoch: 6
+    warm_ratio: 2
+sampling:
+    visual_time: 80 # 89 * 9 = 720
+    num: 8000
+    test_batch: 10000
