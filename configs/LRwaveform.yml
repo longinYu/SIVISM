@@ -37,7 +37,7 @@ train:
     sto_batchsize: 400
     ftimes: 1
     lr_SIMI: 0.001
-    lr_f: 0.003
+    lr_f: 0.003 # 0.002
     gamma: 0.9
     gamma_step: 3000
     z_dim: 10
