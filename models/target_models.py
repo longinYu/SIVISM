@@ -4,7 +4,7 @@ import torch
 import torch.nn.functional as F
 
 
-class banana_shape(object):
+class Banana_shape(object):
     name = "banana_shape"
     def __init__(self, device):
         self.device = device
@@ -43,7 +43,7 @@ class banana_shape(object):
         if save_to_path is not None:
             plt.savefig(save_to_path, bbox_inches='tight')
 
-class x_shaped(object):
+class X_shaped(object):
     name = "x_shaped"
     def __init__(self, device):
         self.device = device
@@ -92,7 +92,7 @@ class x_shaped(object):
             plt.savefig(save_to_path, bbox_inches='tight')
 
 
-class multimodal(object):
+class Multimodal(object):
     name = "multimodal"
     def __init__(self, device):
         self.device = device
@@ -134,7 +134,7 @@ class multimodal(object):
             plt.savefig(save_to_path, bbox_inches='tight')
         
 
-class mnist(object):
+class Mnist(object):
     name = "mnist"
     def __init__(self, device):
         self.device = device
@@ -178,7 +178,7 @@ class mnist(object):
 
 
 
-class hapt(object):
+class Hapt(object):
     name = "hapt"
     def __init__(self, device):
         self.device = device
@@ -358,11 +358,11 @@ class Bnn(object):
 
 
 target_distribution = {
-    "banana":banana_shape,
-    "multimodal":multimodal,
-    "x_shaped":x_shaped,
-    "mnist":mnist,
-    "hapt":hapt,
+    "banana":Banana_shape,
+    "multimodal":Multimodal,
+    "x_shaped":X_shaped,
+    "mnist":Mnist,
+    "hapt":Hapt,
     "LRwaveform": LRwaveform,
     "Bnn_boston": Bnn
 }
