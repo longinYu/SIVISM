@@ -66,7 +66,7 @@ class SIVISM(object):
         ## select the permutaion by train_test_split, 
         train_ratio = 0.9
         X_train, X_test, y_train, y_test = train_test_split(X_input, y_input, test_size= 1-train_ratio, random_state=42)
-        # The hyperparameter loggamma and loglambda is selected  by MCMC method, like SGLD [1] or SVGD [2].
+        # The hyperparameters loggamma and loglambda are selected  by MCMC method, like SGLD [1] or SVGD [2].
         # [1] Welling, Max, and Yee W. Teh. "Bayesian learning via stochastic gradient Langevin dynamics." Proceedings of the 28th international conference on machine learning (ICML-11). 2011.
         # [2] Liu, Qiang, and Dilin Wang. "Stein variational gradient descent: A general purpose bayesian inference algorithm." Advances in neural information processing systems 29 (2016). 
         self.loglambda_hyp = -0.9809319716071633
