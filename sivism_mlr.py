@@ -168,7 +168,7 @@ class SIVISM(object):
                 X = self.SemiVInet.sampling(num = self.config.sampling.num)
                 # calculate the test_loglik
                 with torch.no_grad():
-                    if self.target == "SoftmaxClass":
+                    if self.target == "mnist":
                         for (test_batchdataset, batchlabel) in self.test_loader:
                             batchlabel = F.one_hot(batchlabel, num_classes = 10).to(self.device)
                             test_batchdataset = torch.cat((torch.ones([10000, 1]), test_batchdataset.reshape(-1, 784)), 1).to(self.device)
