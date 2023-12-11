@@ -17,6 +17,11 @@ For the toy examples of 2D synthetic tasks, we show the sampling results of vari
 python sivism_2d.py --config multimodal.yml
 ```
 
+After completing the training process, the KL-divergence between the samples of target distributions and the samples of variational distributions can be estimated via the [ITE](https://bitbucket.org/szzoli/ite-in-python/src/) packages. 
+The samples of target distributions was formed by a long MCMC run, which was simulated through the following command.
+```
+python sgld_toyexample.py
+```
 
 #### Bayesian Logistic Regression
 We provide the result of approximated posterior distributions of Bayesian logistic regression on the *waveform* dataset. We compare the posterior estimates of SIVI-SM with the ground truth formed from a long MCMC run.
